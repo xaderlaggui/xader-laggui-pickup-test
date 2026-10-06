@@ -1,0 +1,17 @@
+/* Desktop checkout: one fixed, compact size at every width >= 900px. */
+:root { --checkout-scale: 0.667; }
+
+@media (width >= 900px) {
+  body:has(.checkout-page) .top-header,
+  body:has(.checkout-page) .main-content {
+    zoom: var(--checkout-scale);
+  }
+  body:has(.checkout-page) .app .main-content.checkout-page-active {
+    min-height: calc(100svh / var(--checkout-scale));
+  }
+  body:has(.checkout-page) .checkout-page {
+    min-height: calc(
+      (100svh / var(--checkout-scale)) - var(--header-height) - var(--space-4) - var(--space-5)
+    );
+  }
+}

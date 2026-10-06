@@ -1,0 +1,35 @@
+html { scroll-behavior: smooth; }
+
+/* Hidden only when JS has confirmed it will reveal them */
+.reveal-ready [data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity var(--dur-smooth, .5s) var(--ease-out, ease-out),
+    transform var(--dur-smooth, .5s) var(--spring-smooth, ease-out);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+.reveal-ready [data-reveal="fade"] { transform: none; }
+.reveal-ready [data-reveal][data-revealed] { opacity: 1; transform: none; will-change: auto; }
+
+.top-header { transition: box-shadow var(--dur-snappy, .38s) var(--ease-out, ease-out); }
+.top-header.is-scrolled { box-shadow: 0 6px 24px #1c281626; }
+
+.company-hero-visual { transform: translate3d(0, var(--parallax-y, 0px), 0); }
+
+@media (hover: hover) {
+  .coffee-card .product-visual img {
+    transition: transform var(--dur-smooth, .5s) var(--spring-smooth, ease-out);
+  }
+  .coffee-card:hover .product-visual img { transform: scale(1.06) rotate(-1.5deg); }
+  .review-card { transition: transform var(--dur-snappy, .38s) var(--spring-snappy, ease-out); }
+  .review-card:hover { transform: translateY(-4px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal-ready [data-reveal] { opacity: 1; transform: none; transition: none; }
+  .company-hero-visual { transform: none; }
+  .coffee-card:hover .product-visual img, .review-card:hover { transform: none; }
+}

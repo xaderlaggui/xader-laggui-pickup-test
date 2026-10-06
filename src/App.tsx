@@ -1,5 +1,6 @@
 import PickupExperience from "./components/PickupExperience"
 import InteractionSupport from "./components/InteractionSupport"
+import AnimationLayer from "./animations/AnimationLayer"
 
 export default function App() {
   return (
@@ -9,6 +10,7 @@ export default function App() {
       </a>
       <PickupExperience />
       <InteractionSupport />
+      <AnimationLayer />
     </>
   )
 }
