@@ -1,0 +1,12 @@
+{
+  "title": "Pickup Coffee",
+  "language": "en",
+  "description": "Enhances an existing coffee ordering site by improving usability, accessibility, and interaction design for faster, clearer, and error-free user experiences.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
