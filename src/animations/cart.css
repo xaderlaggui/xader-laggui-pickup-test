@@ -7,6 +7,7 @@
   to   { opacity: 1; transform: none; }
 }
 
+/* ─── Part 3-B: cart item entrance on BOTH breakpoints ─────────────────── */
 .cart-list-item-wrap {
   max-height: 260px;
   animation: cart-row-in var(--dur-snappy, .38s) var(--spring-smooth, ease-out) backwards;
@@ -15,7 +16,7 @@
     opacity .2s var(--ease-out, ease-out),
     transform .3s var(--ease-in-out, ease-in-out);
 }
-.cart-list-item-wrap:nth-child(2) { animation-delay: 50ms; }
+.cart-list-item-wrap:nth-child(2) { animation-delay:  50ms; }
 .cart-list-item-wrap:nth-child(3) { animation-delay: 100ms; }
 .cart-list-item-wrap:nth-child(n+4) { animation-delay: 150ms; }
 
@@ -27,17 +28,31 @@
   pointer-events: none;
 }
 
+/* ─── Part 3-C: payment radio dot — tactile-pop instead of plain scale ─── */
+/* why: mirrors the badge/checkmark pop so all selection feedback feels same */
+@keyframes radio-pop {
+  0%   { opacity: 0; transform: scale(0); }
+  65%  { opacity: 1; transform: scale(1.3); }
+  82%  { transform: scale(.88); }
+  100% { opacity: 1; transform: scale(1); }
+}
+.payment-card input[type="radio"]:checked::after {
+  animation: radio-pop var(--dur-bouncy, .52s) var(--spring-bouncy, ease-out) both;
+}
+
 .cart-limit-help {
   margin: 0;
   padding: 8px 0;
-  font-size: 12px;
+  font-size: var(--type-footnote); /* AUDIT: was 12px → --type-footnote */
   color: var(--text);
   animation: cart-help-in var(--dur-snappy, .38s) var(--ease-out, ease-out) both;
 }
 
 .checkout-page .quantity-adjuster button,
 .checkout-page .primary-button {
-  transition: transform var(--dur-press, .12s) var(--spring-snappy, ease-out), background-color var(--dur-fade, .24s) var(--ease-out, ease-out);
+  transition:
+    transform var(--dur-press, .12s) var(--spring-snappy, ease-out),
+    background-color var(--dur-fade, .24s) var(--ease-out, ease-out);
 }
 .checkout-page .quantity-adjuster button:active:not(:disabled) { transform: scale(.92); }
 @media (hover: hover) {
@@ -45,7 +60,12 @@
 }
 .checkout-page .primary-button:active:not(:disabled) { transform: translateY(1px); }
 
+/* ─── Part 3-F: reduced motion ─────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
-  .cart-list-item-wrap, .cart-limit-help { animation: none; transition: none; }
-  .checkout-page .quantity-adjuster button, .checkout-page .primary-button { transition: none; }
+  .cart-list-item-wrap,
+  .cart-limit-help { animation: none; transition: none; }
+  .checkout-page .quantity-adjuster button,
+  .checkout-page .primary-button { transition: none; }
+  /* Part 3-C */
+  .payment-card input[type="radio"]:checked::after { animation: none; }
 }

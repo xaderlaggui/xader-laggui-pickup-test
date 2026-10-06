@@ -3,7 +3,7 @@ import { useEffect } from "react"
 const REVEALS: { selector: string; mode?: "fade"; stagger?: number }[] = [
   { selector: ".section-heading" },
   { selector: ".review-strip-heading" },
-  { selector: ".review-strip-window", mode: "fade" },
+  { selector: ".review-strip-window", mode: "fade" }, /* Part 3-E: triggers card stagger in CSS */ /* Part 3-E: triggers card stagger in CSS */
   { selector: ".pair-with-section" },
   { selector: ".footer-col", stagger: 80 },
 ]

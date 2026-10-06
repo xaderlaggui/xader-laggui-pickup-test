@@ -1,3 +1,284 @@
+@import 'tailwindcss';
+@import './original.css';
+@import './checkout-layout.css';
+
+/* ios-font-applied */
+
+/* ─── iOS-style font stack ─────────────────────────────────────────────────
+   SF Pro is served automatically by -apple-system / BlinkMacSystemFont on
+   Apple devices. On Windows/Android the stack falls through to Segoe UI /
+   Roboto which are the closest system equivalents.                          */
+:root {
+  --font-family-base:
+    -apple-system,
+    BlinkMacSystemFont,
+    "SF Pro Display",
+    "SF Pro Text",
+    "Helvetica Neue",
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
+
+  /* ── iOS Dynamic Type scale (points → px at 1x) ─────────────────────── */
+  --fs-large-title:  2.125rem;   /* 34px  — Large Title  */
+  --fs-title-1:      1.75rem;    /* 28px  — Title 1      */
+  --fs-title-2:      1.375rem;   /* 22px  — Title 2      */
+  --fs-title-3:      1.25rem;    /* 20px  — Title 3      */
+  --fs-headline:     1.0625rem;  /* 17px  — Headline (semibold) */
+  --fs-body:         1.0625rem;  /* 17px  — Body         */
+  --fs-callout:      1rem;       /* 16px  — Callout      */
+  --fs-subhead:      0.9375rem;  /* 15px  — Subheadline  */
+  --fs-footnote:     0.8125rem;  /* 13px  — Footnote     */
+  --fs-caption-1:    0.75rem;    /* 12px  — Caption 1    */
+  --fs-caption-2:    0.6875rem;  /* 11px  — Caption 2    */
+
+  /* ── iOS font weights ───────────────────────────────────────────────── */
+  --fw-ultralight: 100;
+  --fw-thin:       200;
+  --fw-light:      300;
+  --fw-regular:    400;
+  --fw-medium:     500;
+  --fw-semibold:   600;
+  --fw-bold:       700;
+  --fw-heavy:      800;
+  --fw-black:      900;
+
+  /* ── iOS letter spacing (approximate) ──────────────────────────────── */
+  --ls-large-title: -0.025em;
+  --ls-title:       -0.02em;
+  --ls-headline:    -0.025em;
+  --ls-body:        -0.025em;
+  --ls-subhead:     -0.016em;
+  --ls-footnote:    -0.005em;
+  --ls-caption:      0.004em;
+  --ls-allcaps:      0.04em;
+
+  /* ── iOS line heights ───────────────────────────────────────────────── */
+  --lh-tight:    1.15;
+  --lh-snug:     1.25;
+  --lh-normal:   1.45;
+  --lh-relaxed:  1.6;
+}
+
+/* ─── Base ──────────────────────────────────────────────────────────────── */
+body {
+  font-family: var(--font-family-base);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-normal);
+  letter-spacing: var(--ls-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* ─── Heading hierarchy ─────────────────────────────────────────────────── */
+h1 {
+  font-size: var(--fs-large-title);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-large-title);
+}
+h2 {
+  font-size: var(--fs-title-2);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-title);
+}
+h3 {
+  font-size: var(--fs-headline);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-headline);
+}
+h4 {
+  font-size: var(--fs-subhead);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-normal);
+  letter-spacing: var(--ls-subhead);
+}
+
+/* ─── Utility classes (iOS type roles) ─────────────────────────────────── */
+.type-large-title {
+  font-size: var(--fs-large-title);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-large-title);
+}
+.type-title-1 {
+  font-size: var(--fs-title-1);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-title);
+}
+.type-title-2 {
+  font-size: var(--fs-title-2);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-title);
+}
+.type-title-3 {
+  font-size: var(--fs-title-3);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-title);
+}
+.type-headline {
+  font-size: var(--fs-headline);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-headline);
+}
+.type-body {
+  font-size: var(--fs-body);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-normal);
+  letter-spacing: var(--ls-body);
+}
+.type-callout {
+  font-size: var(--fs-callout);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-normal);
+  letter-spacing: var(--ls-body);
+}
+.type-subhead {
+  font-size: var(--fs-subhead);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-normal);
+  letter-spacing: var(--ls-subhead);
+}
+.type-footnote {
+  font-size: var(--fs-footnote);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-relaxed);
+  letter-spacing: var(--ls-footnote);
+}
+.type-caption-1 {
+  font-size: var(--fs-caption-1);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-normal);
+  letter-spacing: var(--ls-caption);
+}
+.type-caption-2 {
+  font-size: var(--fs-caption-2);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-normal);
+  letter-spacing: var(--ls-caption);
+}
+
+/* ─── Map existing tokens to new iOS scale ──────────────────────────────── */
+/* keeps original.css token names working without touching that file         */
+:root {
+  --font-size-display:      var(--fs-large-title);
+  --font-size-title:        var(--fs-title-1);
+  --font-size-section-title:var(--fs-title-2);
+  --font-size-heading:      var(--fs-headline);
+  --font-size-body:         var(--fs-body);
+  --font-size-text:         var(--fs-subhead);
+  --font-size-description:  var(--fs-footnote);
+  --font-size-label:        var(--fs-caption-1);
+  --font-size-caption:      var(--fs-caption-2);
+  --font-size-primary-button: var(--fs-body);
+  --font-size-button:       var(--fs-subhead);
+  --font-size-button-small: var(--fs-footnote);
+}
+
+/* ─── Checkout — iOS-sized, never tiny ─────────────────────────────────── */
+.checkout-section-title,
+#checkout-form .section-heading h2,
+.schedule-section h2 {
+  font-size: var(--fs-title-2);        /* 22px */
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-title);
+}
+
+/* labels */
+.input-block label,
+#checkout-form .name-field > label,
+.payment-legend {
+  font-size: var(--fs-subhead);        /* 15px */
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-subhead);
+}
+
+/* inputs */
+.name-input,
+.note-input {
+  font-size: var(--fs-callout);        /* 16px */
+  font-family: var(--font-family-base);
+}
+
+/* helper text */
+.field-help,
+.payment-note,
+.pickup-ready-note {
+  font-size: var(--fs-footnote);       /* 13px */
+  letter-spacing: var(--ls-footnote);
+}
+
+/* cart item names */
+.cart-item-details h3 {
+  font-size: var(--fs-subhead);        /* 15px */
+  font-weight: var(--fw-semibold);
+}
+
+/* cart meta */
+.cart-item-meta {
+  font-size: var(--fs-footnote);       /* 13px */
+}
+
+/* cart prices */
+.cart-item-price {
+  font-size: var(--fs-subhead);        /* 15px */
+  font-weight: var(--fw-bold);
+}
+
+/* order total */
+.cart-total,
+.checkout-footer-price,
+.cart-breakdown-total {
+  font-size: var(--fs-title-3);        /* 20px */
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-title);
+}
+
+/* payment cards */
+.payment-card {
+  font-size: var(--fs-subhead);        /* 15px */
+  font-weight: var(--fw-medium);
+}
+.payment-card.selected,
+.payment-card:has(input:checked) {
+  font-weight: var(--fw-semibold);
+}
+
+/* primary button */
+.primary-button,
+.checkout-button {
+  font-size: var(--fs-body);           /* 17px */
+  font-weight: var(--fw-semibold);
+  font-family: var(--font-family-base);
+  letter-spacing: var(--ls-body);
+}
+
+/* ─── Mobile: hold the line, no shrinking ──────────────────────────────── */
+@media (width <= 899px) {
+  .checkout-section-title,
+  #checkout-form .checkout-section-title,
+  #checkout-form .schedule-section h2  { font-size: var(--fs-title-2); }
+  #checkout-form .name-field           { font-size: var(--fs-subhead); }
+  #checkout-form .name-input           { font-size: var(--fs-callout); }
+  #checkout-form .payment-legend       { font-size: var(--fs-subhead); }
+  #checkout-form .payment-note         { font-size: var(--fs-footnote); }
+  #checkout-form .payment-card         { font-size: var(--fs-subhead); }
+  #checkout-form .schedule-summary     { font-size: var(--fs-footnote); }
+  #checkout-form .schedule-summary strong { font-size: var(--fs-subhead); }
+  .checkout-page .cart-item-details h3 { font-size: var(--fs-subhead); }
+  .checkout-page .cart-item-meta       { font-size: var(--fs-footnote); }
+  .checkout-page .cart-item-price      { font-size: var(--fs-subhead); }
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 @import 'tailwindcss';
 @import './original.css';
@@ -9,12 +290,12 @@
 }
 button { touch-action: manipulation; }
 button:disabled { cursor: not-allowed; opacity: .55; }
-.skip-link { position: fixed; top: 12px; left: 12px; z-index: 9999; padding: 12px 18px; background: #f1f0e4; color: #1c2816; border-radius: 12px; transform: translateY(-180%); }
+.skip-link { position: fixed; top: 12px; left: 12px; z-index: 9999; padding: 12px 18px; background: var(--surface); color: var(--text); border-radius: 12px; /* AUDIT: hardcoded hex → --surface / --text */ transform: translateY(-180%); }
 .skip-link:focus { transform: translateY(0); }
 .ux-notice { position: fixed; bottom: calc(100px + env(safe-area-inset-bottom)); left: 50%; transform: translateX(-50%); z-index: 1000; display: flex; align-items: center; gap: 12px; max-width: calc(100vw - 24px); width: max-content; background: var(--surface, #f1f0e4); color: var(--text, #1c2816); padding: 10px 16px; border: 1px solid var(--line, #1c281630); border-radius: 16px; box-shadow: 0 8px 28px #2126220f; font: 500 14px Inter, sans-serif; }
 .ux-notice button { min-width: 44px; min-height: 44px; color: inherit; font-weight: 700; }
-.field-help { font-size: 13px; color: var(--text); margin-top: 6px; }
-.cart-edit-button { min-height: 44px; text-decoration: underline; font-size: 12px; color: var(--text); }
+.field-help { font-size: var(--type-footnote); color: var(--muted); margin-top: 6px; } /* AUDIT: 13px → --type-footnote; color --text → --muted (helper copy) */
+.cart-edit-button { min-height: 44px; text-decoration: underline; font-size: var(--type-caption1); color: var(--text); } /* AUDIT: 12px → --type-caption1 */
 .cart-empty-message .schedule-edit-button { display: block; margin: 12px auto 0; }
 .quantity-adjuster button, .checkout-page .quantity-adjuster button, .close-button { min-width: 44px; min-height: 44px; }
 .size-options button, .temp-toggle button, .category-tabs button { min-height: 44px; }
@@ -22,9 +303,9 @@ button:disabled { cursor: not-allowed; opacity: .55; }
 .coffee-card:focus-within { outline: 3px solid var(--text); outline-offset: 3px; }
 .coffee-card .add-button { position: relative; z-index: 11; }
 .sr-status { position: absolute; width: 1px; height: 1px; overflow: hidden; padding: 0; border: 0; }
-body:has(.app.dark) .ux-notice { background: #1c2816; color: #f1f0e4; }
+body:has(.app.dark) .ux-notice { background: var(--surface); color: var(--text); } /* AUDIT: hardcoded dark hex → semantic tokens */
 .menu-filters button { min-height: 44px; }
-.primary-button, .checkout-button { color: #1c2816; }
+.primary-button, .checkout-button { color: var(--text); } /* AUDIT: #1c2816 → --text (flips in dark mode) */
 .review-strip:hover .review-strip-track, .review-strip:focus-within .review-strip-track { animation-play-state: paused; }
 .coffee-card .add-button:active, .primary-button:active { transform: translateY(1px); }
 #checkout-form > .location-section { order: 0; }
@@ -118,7 +399,214 @@ body:has(.app.dark) .ux-notice { background: #1c2816; color: #f1f0e4; }
   .checkout-page .cart-list-item { padding: var(--space-3); gap: var(--space-3); }
   .checkout-page .cart-item-details { gap: var(--space-1); }
   .checkout-sticky-footer { padding-inline: var(--container-gutter); }
+
+  /* AUDIT Part 3-D: sticky footer entrance */
+  .checkout-sticky-footer {
+    animation: footer-slide-in var(--dur-snappy, .38s) var(--spring-smooth, ease-out) both;
+  }
+  .checkout-sticky-footer.footer-hidden {
+    animation: footer-slide-out var(--dur-snappy, .38s) var(--ease-in-out, ease-in-out) both;
+  }
+
+  /* AUDIT Part 3-A: mirror desktop section entrance on mobile */
+  #checkout-form > .checkout-section,
+  #checkout-form > .schedule-section {
+    animation: rise-16 var(--dur-smooth, .5s) var(--spring-smooth, ease-out) both;
+  }
+  #checkout-form > .checkout-section:nth-of-type(2),
+  #checkout-form > .schedule-section:nth-of-type(2) { animation-delay: var(--dur-stagger, 50ms); }
+  #checkout-form > .checkout-section:nth-of-type(3),
+  #checkout-form > .schedule-section:nth-of-type(3) { animation-delay: calc(var(--dur-stagger, 50ms) * 2); }
+  #checkout-form > .checkout-section:nth-of-type(n+4),
+  #checkout-form > .schedule-section:nth-of-type(n+4) { animation-delay: calc(var(--dur-stagger, 50ms) * 3); }
+
 }
 @media (width <= 360px) {
   .checkout-page .cart-item-actions { flex-basis: 100%; align-items: flex-end; }
+}
+
+/* ─── AUDIT Part 4: checkout typography uniformity ──────────────────────── */
+
+/* Section titles ("Pickup location", "Schedule", "Your details", "Payment") */
+/* AUDIT: must match --type-title2 = 22 px, weight 700 on both breakpoints   */
+.checkout-section-title,
+#checkout-form .section-heading h2,
+#checkout-form .checkout-section h2,
+.schedule-section h2 {
+  font-size: var(--type-title2); /* AUDIT: was inline 14px on mobile → token */
+  font-weight: 700;
+  letter-spacing: .35px;
+  line-height: 1.2;
+}
+
+/* Field labels ("Branch name (required)", "Name for pickup", "Contact") */
+/* AUDIT: --type-caption1 = 12 px, uppercase, weight 500                     */
+.input-block label,
+#checkout-form .name-field > label,
+.payment-legend {
+  font-size: var(--type-caption1); /* AUDIT: was --type-footnote in some places */
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: .6px;
+}
+
+/* Helper / note text below fields                                            */
+/* AUDIT: --type-footnote = 13 px, weight 400, color --muted                 */
+.field-help,
+.payment-note,
+.pickup-ready-note {
+  font-size: var(--type-footnote); /* AUDIT: was 13px raw → token */
+  font-weight: 400;
+  color: var(--muted);
+}
+
+/* Payment card labels — unselected weight 500, selected weight 600          */
+/* AUDIT: was font-weight: 500 only; selected state bump was missing          */
+.payment-card {
+  font-size: var(--type-subhead);
+  font-weight: 500;
+}
+.payment-card.selected,
+.payment-card:has(input:checked) {
+  font-weight: 600; /* AUDIT: add selected weight bump */
+}
+
+/* Primary / Review order button                                              */
+/* AUDIT: --font-size-primary-button = 17 px, weight 700; remove mobile      */
+/* overrides that were shrinking it below the token value                     */
+.primary-button {
+  font-size: var(--font-size-primary-button) !important; /* AUDIT: was overridden to smaller on mobile */
+  font-weight: 700;
+}
+
+/* Mobile: undo the font-size shrink that was applied via the 899px block    */
+@media (width <= 899px) {
+  #checkout-form .payment-legend {
+    font-size: var(--type-caption1); /* AUDIT: was 14px → token */
+  }
+  #checkout-form .checkout-section-title,
+  #checkout-form .schedule-section h2 {
+    font-size: var(--type-title2); /* AUDIT: was 14px → token */
+  }
+  #checkout-form .name-field {
+    font-size: var(--type-subhead); /* AUDIT: was 12px → token */
+  }
+  #checkout-form .name-input {
+    font-size: var(--type-subhead); /* AUDIT: was 13px → token */
+  }
+  #checkout-form .payment-note {
+    font-size: var(--type-footnote); /* AUDIT: was 12px → token */
+  }
+  #checkout-form .payment-card {
+    font-size: var(--type-subhead); /* AUDIT: was 12px → token */
+  }
+  #checkout-form .schedule-summary {
+    font-size: var(--type-footnote); /* AUDIT: was 12px → token */
+  }
+  #checkout-form .schedule-summary strong {
+    font-size: var(--type-subhead); /* AUDIT: was 13px → token */
+  }
+  #checkout-form .cart-item-details h3 {
+    font-size: var(--type-subhead); /* AUDIT: was 13px → token */
+  }
+  #checkout-form .cart-item-meta {
+    font-size: var(--type-footnote); /* AUDIT: was 12px → token */
+  }
+  #checkout-form .cart-item-price {
+    font-size: var(--type-footnote); /* AUDIT: was 13px → token */
+    color: var(--green-text); /* AUDIT: confirm accessible green */
+  }
+}
+
+/* ─── AUDIT Part 4: checkout typography uniformity ──────────────────────── */
+
+/* Section titles ("Pickup location", "Schedule", "Your details", "Payment") */
+/* AUDIT: must match --type-title2 = 22 px, weight 700 on both breakpoints   */
+.checkout-section-title,
+#checkout-form .section-heading h2,
+#checkout-form .checkout-section h2,
+.schedule-section h2 {
+  font-size: var(--type-title2); /* AUDIT: was inline 14px on mobile → token */
+  font-weight: 700;
+  letter-spacing: .35px;
+  line-height: 1.2;
+}
+
+/* Field labels ("Branch name (required)", "Name for pickup", "Contact") */
+/* AUDIT: --type-caption1 = 12 px, uppercase, weight 500                     */
+.input-block label,
+#checkout-form .name-field > label,
+.payment-legend {
+  font-size: var(--type-caption1); /* AUDIT: was --type-footnote in some places */
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: .6px;
+}
+
+/* Helper / note text below fields                                            */
+/* AUDIT: --type-footnote = 13 px, weight 400, color --muted                 */
+.field-help,
+.payment-note,
+.pickup-ready-note {
+  font-size: var(--type-footnote); /* AUDIT: was 13px raw → token */
+  font-weight: 400;
+  color: var(--muted);
+}
+
+/* Payment card labels — unselected weight 500, selected weight 600          */
+/* AUDIT: was font-weight: 500 only; selected state bump was missing          */
+.payment-card {
+  font-size: var(--type-subhead);
+  font-weight: 500;
+}
+.payment-card.selected,
+.payment-card:has(input:checked) {
+  font-weight: 600; /* AUDIT: add selected weight bump */
+}
+
+/* Primary / Review order button                                              */
+/* AUDIT: --font-size-primary-button = 17 px, weight 700; remove mobile      */
+/* overrides that were shrinking it below the token value                     */
+.primary-button {
+  font-size: var(--font-size-primary-button) !important; /* AUDIT: was overridden to smaller on mobile */
+  font-weight: 700;
+}
+
+/* Mobile: undo the font-size shrink that was applied via the 899px block    */
+@media (width <= 899px) {
+  #checkout-form .payment-legend {
+    font-size: var(--type-caption1); /* AUDIT: was 14px → token */
+  }
+  #checkout-form .checkout-section-title,
+  #checkout-form .schedule-section h2 {
+    font-size: var(--type-title2); /* AUDIT: was 14px → token */
+  }
+  #checkout-form .name-field {
+    font-size: var(--type-subhead); /* AUDIT: was 12px → token */
+  }
+  #checkout-form .name-input {
+    font-size: var(--type-subhead); /* AUDIT: was 13px → token */
+  }
+  #checkout-form .payment-note {
+    font-size: var(--type-footnote); /* AUDIT: was 12px → token */
+  }
+  #checkout-form .payment-card {
+    font-size: var(--type-subhead); /* AUDIT: was 12px → token */
+  }
+  #checkout-form .schedule-summary {
+    font-size: var(--type-footnote); /* AUDIT: was 12px → token */
+  }
+  #checkout-form .schedule-summary strong {
+    font-size: var(--type-subhead); /* AUDIT: was 13px → token */
+  }
+  #checkout-form .cart-item-details h3 {
+    font-size: var(--type-subhead); /* AUDIT: was 13px → token */
+  }
+  #checkout-form .cart-item-meta {
+    font-size: var(--type-footnote); /* AUDIT: was 12px → token */
+  }
+  #checkout-form .cart-item-price {
+    font-size: var(--type-footnote); /* AUDIT: was 13px → token */
+    color: var(--green-text); /* AUDIT: confirm accessible green */
+  }
 }

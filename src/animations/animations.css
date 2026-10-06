@@ -23,13 +23,39 @@ html { scroll-behavior: smooth; }
     transition: transform var(--dur-smooth, .5s) var(--spring-smooth, ease-out);
   }
   .coffee-card:hover .product-visual img { transform: scale(1.06) rotate(-1.5deg); }
-  .review-card { transition: transform var(--dur-snappy, .38s) var(--spring-snappy, ease-out); }
-  .review-card:hover { transform: translateY(-4px); }
+  /* why: translate only so carousel transform is not clobbered */
+  .review-card { transition: translate var(--dur-snappy, .38s) var(--spring-snappy, ease-out); }
+  .review-card:hover { translate: 0 -4px; }
 }
+
+/* ─── Part 3-D: sticky footer slide keyframes ──────────────────────────── */
+@keyframes footer-slide-in {
+  from { transform: translateY(100%); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+@keyframes footer-slide-out {
+  from { transform: translateY(0);    opacity: 1; }
+  to   { transform: translateY(100%); opacity: 0; }
+}
+
+/* ─── Part 3-E: review card mobile entrance (staggered via JS delay) ───── */
+/* why: added .review-strip-window selector in useScrollEffects feeds this  */
+.review-strip-window[data-reveal][data-revealed] .review-card {
+  animation: motion-fade var(--dur-snappy, .38s) var(--ease-out, ease-out) both;
+}
+.review-strip-window[data-reveal][data-revealed] .review-card:nth-child(2) { animation-delay:  50ms; }
+.review-strip-window[data-reveal][data-revealed] .review-card:nth-child(3) { animation-delay: 100ms; }
+.review-strip-window[data-reveal][data-revealed] .review-card:nth-child(n+4) { animation-delay: 150ms; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal-ready [data-reveal] { opacity: 1; transform: none; transition: none; }
   .company-hero-visual { transform: none; }
-  .coffee-card:hover .product-visual img, .review-card:hover { transform: none; }
+  .coffee-card:hover .product-visual img { transform: none; }
+  .review-card:hover { translate: none; }
+  /* Part 3-D */
+  .checkout-sticky-footer,
+  .checkout-sticky-footer.footer-hidden { animation: none; }
+  /* Part 3-E */
+  .review-strip-window[data-reveal][data-revealed] .review-card { animation: none; }
 }
